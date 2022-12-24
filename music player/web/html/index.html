@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music player</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../resources/headphones.png">
+    <script src="../js/jsmediatags.min.js"></script>
+    <script src="/eel.js" type="text/javascript"></script>
+</head>
+<body onload="first_song()">
+    <div class="content">
+        <div class="body">
+            <div class="points" onclick="open_right_menu()"></div>
+            <div class="right_menu" id="right_menu">
+                <span><button class="x_btn" onclick="close_right_menu()"></button></span>
+                <span class="span" onclick="open_folder()">Добавить музыку</span>
+                <span class="span" onclick="open_visual()">Визуализатор</span>
+            </div>
+            <div class="down_menu" id="down_menu"></div>
+            <div class="image" id="image">
+                <div class="image1" id="image1"></div>
+                <div class="visualiser" id="visualiser">
+                    <video src="../resources/mDust_019--online-audio-convert.com.mp4" muted loop autoplay></video>
+                    <div class="circle" id="circle"><div class="circle1"></div></div>
+                    <div id="pos"></div>
+                </div>
+            </div>
+            <div class="name"><div class="name" id="song">Song</div><div class="artist" id="artist">Artist</div></div>
+            <div class="time_line">
+                <input type="range" min="0" max="100" value="0" id="time_line" oninput="rangevalue.value=value"/>
+                <div class="time">
+                    <span id="start">0:00</span>
+                    <span id="end"></span>
+                </div>
+            </div>
+            <div class="controls">
+                <form name="iform">
+                    <input type="button" value="" name="plelist" onclick="open_playlist()">
+                    <input type="button" value="" name="left" onclick="pre_song()">
+                    <input type="button" value="" name="pause" onclick="start_play()" id="play_pause">
+                    <input type="button" value="" name="right" onclick="next_song()">
+                    <input type="button" value="" name="sound" class="sound" onclick="show_volume()">
+                    <input type="range" name="volume" id="volume" min="0" max="100" value="100" oninput="rangevalue.value=value" class="volume">
+                </form>
+            </div>
+        </div>
+        <audio src="" id="audio"></audio>
+    </div>
+    <script src="../js/script.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,575 @@
+@font-face {
+    font-family: inter;
+    src: url(../fonts/Inter-Medium.ttf);
+    font-weight: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+    cursor:default ;
+}:root
+{
+    --width: 400px;
+    --main_color: #1e1e1e;
+    --sec_color: #3d3d3d;
+    --interface: #ffc977;
+    --radius: 10px;
+}
+body{
+    background-color: var(--sec_color);
+}
+.content{
+    width: min(100% - 20px, var(--width));
+    height: calc(100vh - 20px);
+    margin-top: 10px;
+    background-color: var(--main_color);
+    margin-inline: auto;
+    border-radius: var(--radius);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.body{
+    width: min(100% - 60px, calc(100% - 60px));
+    height: min(100% - 60px, calc(100% - 60px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.image{
+    min-width: 100%;
+    max-width: 100%;
+    border: solid #fff 1px;
+    overflow: hidden;
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+.image .image1{
+    width: 100%;
+    height: 100%;
+    background: url('../resources/audio-cassette-minimalist-ec-2048x1152.jpg');
+    background-position: center;
+    background-size: cover;
+}
+.name{
+    width: 100%;
+    min-height: 20px;
+    line-height: 20px;
+    font-family: inter;
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+    color: #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.artist{
+    width: 100%;
+    min-height: 20px;
+    line-height: 20px;
+    padding: 10px;
+    font-family: inter;
+    font-size: 16px;
+    font-weight: bolder;
+    text-align: center;
+    color: #666;
+}
+.time_line{
+    width: 100%;
+    height: 30px;
+}
+.time_line input[type="range"]{
+    width: 100%;
+    appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.6);
+    background-image: linear-gradient(var(--interface), var(--interface));
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    transition: all .2s ease-in-out;
+}
+.time_line input[type="range"]::-webkit-slider-thumb {
+    background: var(--interface);
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
+    appearance: none;
+    transition: all .2s ease-in-out;
+}
+.time_line input[type="range"]:hover::-webkit-slider-thumb{
+    height: 10px;
+    width: 10px;
+}
+.time{
+    display: flex;
+    justify-content: space-between;
+    color: var(--interface);
+}
+.controls{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease-in-out;
+    position: relative;
+}
+form{
+    width: 65%;
+    height: 70px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: all .2s ease-in-out;
+}
+input[type="button"]{
+    min-width: 60px;
+    max-width: 60px;
+    max-height: 60px;
+    min-height: 60px;
+    line-height: 60px;
+    border: solid #000 1px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .8), inset 5px 5px 10px rgba(0, 0, 0, .5);
+    border-radius: 50%;
+    outline: none;
+    background-color: #ddd;
+    color: var(--interface);
+    font-size: 24px;
+    font-weight: 900;
+    transition: all .15s ease-in-out;
+}
+input[type="button"]:nth-child(1){
+    background: url(../resources/list.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    border: none;
+    box-shadow: none;
+}
+input[type="button"]:nth-child(2){
+    background: url(../resources/rewind.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    border: none;
+    box-shadow: none;
+}
+input[type="button"]:nth-child(3){
+    background: url(../resources/play.png);
+    background-color: #ddd;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    transition: all .2s ease-in-out;
+}
+input[type="button"]:nth-child(4){
+    background: url(../resources/fast-forward.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    border: none;
+    box-shadow: none;
+}
+input[type="button"]:nth-child(5){
+    background: url(../resources/volume-2.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    border: none;
+    box-shadow: none;
+}
+input[type="button"]:hover{
+    filter: brightness(.6);
+}
+.points{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background: url(../resources/more-vertical.png);
+    background-position: center;
+    background-size: cover;
+    transition: all .15s ease;
+}
+.points:hover{
+    background: url(../resources/more-vertical_disabled.png);
+    background-position: center;
+    background-size: cover;
+}
+.right_menu{
+    position: absolute;
+    left: -100%;
+    top: 0;
+    z-index: 10;
+    width: 80%;
+    height: 100%;
+    background-color: var(--main_color);
+    transition: all .3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 5px 0px 10px rgba(0, 0, 0, .8);
+}
+.confirm{
+    outline: none;
+    border:solid #000 1px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 170px;
+    height: 30px;
+    border-radius: 5px;
+    font-family: inter;
+    background-color: #ddd;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .8), inset 5px 5px 10px rgba(0, 0, 0, .5);
+    color: var(--interface);
+    transition: all .2s ease-in-out;
+}
+.confirm:hover{
+    filter: brightness(.8);
+}
+.path{
+    width: 200px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    outline: none;
+    border-radius: 5px;
+    border: solid #000 1px;
+    text-align: center;
+    color: var(--interface);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .8), inset 5px 5px 10px rgba(0, 0, 0, .5);
+}
+.right_menu .span, .right_menu span{
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-family: inter;
+    color:rgba(255, 255, 255, 0.6);
+    border-bottom: solid rgba(255, 255, 255, 0.3) 1px;
+    position: relative;
+    transition: all .15s ease;
+}
+.right_menu .span:hover{
+    color: var(--interface);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.x_btn{
+    outline: none;
+    border:solid #000 1px;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 5px;
+    background: url(../resources/free-icon-font-cross-3917759.png);
+    background-color: #ddd;
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .8), inset 5px 5px 10px rgba(0, 0, 0, .5);
+    transition: all .2s ease-in-out;
+}
+.x_btn:hover{
+    filter: brightness(.8);
+}
+/* Визуалайзер */
+.visualiser{
+    width: 100%;
+    height: 100%;
+    background-color: var(--sec_color);
+    box-shadow: inset 0px 0px 50px rgba(0, 0, 0, .8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.circle{
+    width: 35%;
+    height: 35%;
+    border-radius: 10px;
+    background: linear-gradient(#e66465, #9198e5);
+    background-size: 500%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+.circle::before, .circle1::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#e66465, #9198e5);
+    filter: blur(20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.circle1{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;    
+    background: linear-gradient(135deg, #e66465, #9198e5);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transition-delay: .2s;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 2;
+}
+#pos{
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    background: url('../resources/audio-cassette-minimalist-ec-2048x1152.jpg');
+    background-position: 50%;
+    background-size: 230%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
+}
+video{
+    height: 100%;
+    width: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.down_menu{
+    height: 100%;
+    width: 100%;
+    background-color: var(--main_color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    box-shadow: 5px 0px 10px rgba(0, 0, 0, .5);
+    transition: all .3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+.down_menu span{
+    width: 90%;
+    height: 70px;
+    min-height: 70px;
+    border-bottom: solid rgba(255, 255, 255, 0.3) 1px;
+    border-top: solid rgba(255, 255, 255, 0.3) 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.down_menu .playlist_song_img{
+    width: 60px;
+    height: 60px;
+    background: url();
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    border: solid rgba(255, 255, 255, 0.6) 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.isplay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    background-color: rgba(0, 0, 0, .8);
+    overflow: hidden;
+}
+@keyframes round 
+{
+35%{opacity:1}
+100%{opacity:0}
+}
+.play_img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: round .7s infinite;
+    opacity:0;
+    z-index: 12;
+}
+.play_img:nth-child(1)
+{
+    width: 100%;
+    height: 100%;
+    background: url(../resources/re-bar-chart.png);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+	animation-delay:0s;
+}
+.play_img:nth-child(2)
+{
+    width: 100%;
+    height: 100%;
+    background: url(../resources/bar-chart.png);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+	animation-delay:.75s
+}
+.play_img:nth-child(3)
+{
+    width: 100%;
+    height: 100%;
+    background: url(../resources/re-bar-chart-2.png);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+	animation-delay:.6s
+}
+.play_img:nth-child(4)
+{
+    width: 100%;
+    height: 100%;
+    background: url(../resources/bar-chart.png);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+	animation-delay:.45s
+}
+.play_img:nth-child(5)
+{
+    width: 100%;
+    height: 100%;
+    background: url(../resources/bar-chart.png);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+	animation-delay:.3s
+}
+.play_img:nth-child(6)
+{
+    width: 100%;
+    height: 100%;
+    background: url(../resources/re-bar-chart-2.png);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+	animation-delay:.15s
+}
+
+.down_menu .playlist_song_meta{
+    height: 60px;
+    width: calc(100% - 70px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+}
+.down_menu .playlist_song_title{
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    color: #ddd;
+    font-family: inter;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.down_menu .playlist_song_artist{
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    color: #666;
+    font-family: inter;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.x_btn2{
+    outline: none;
+    border:solid #000 1px;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 5px;
+    background: url(../resources/free-icon-font-cross-3917759.png);
+    background-color: #ddd;
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .8), inset 5px 5px 10px rgba(0, 0, 0, .5);
+    transition: all .2s ease-in-out;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: calc(100% - 50px);
+}
+.x_btn2:hover{
+    filter: brightness(.8);
+}
+.volume{
+    position: absolute;
+    right: -20px;
+    top: -50;
+    transform: rotate(-90deg);
+    display: none;
+    appearance: none;
+    height: 6px;
+    width: 50px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.6);
+    background-image: linear-gradient(var(--interface), var(--interface));
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+.volume::-webkit-slider-thumb {
+    background: var(--interface);
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    appearance: none;
+}
+@media screen and (max-width: 370px){
+    .volume{
+        position: fixed;
+        right: 0;
+        top: -20;
+    }
+}
